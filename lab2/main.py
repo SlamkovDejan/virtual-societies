@@ -151,6 +151,8 @@ if __name__ == '__main__':
     train_data, test_data = split_data(nodes)
     train_targets, test_targets = encode_classes(train_data, test_data)
 
+    ###############################################################
+
     no_neighbour_train_features, no_neighbour_test_features = train_data[features_names], test_data[features_names]
     neighbour_train_features = add_neighbour_data(g, train_data, nodes)
     neighbour_test_features = add_neighbour_data(g, test_data, nodes)
@@ -161,6 +163,8 @@ if __name__ == '__main__':
     # we can use the same '[]_targets' because both (with neighbours and without) datasets are extracted from the same
     # datasets: 'train_data' and 'test_data' and follow the same order of nodes
     create_and_evaluate_classifier(neighbour_train_features, train_targets, neighbour_test_features, test_targets)
+
+    ###############################################################
 
     if not os.path.exists(LAPLACIAN_EMB_FILE_PATH):
         laplacian = LaplacianEigenmaps(d=50)

@@ -45,6 +45,8 @@ if __name__ == "__main__":
     train_dataset, test_dataset = split_data(node_classes)
     train_targets, test_targets, target_encoding = encode_classes(train_dataset, test_dataset)
 
+    ###############################################################
+
     # creating GCN model
     gcn_generator = FullBatchNodeGenerator(stellar_g, method="gcn", sparse=False)
     train_gcn_gen = gcn_generator.flow(train_dataset.index, train_targets)
@@ -78,6 +80,8 @@ if __name__ == "__main__":
         title="GCN embs",
         is_sage=False
     )
+
+    ###############################################################
 
     # creating SAGE model
     batch_size = 50
